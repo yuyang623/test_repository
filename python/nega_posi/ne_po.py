@@ -21,8 +21,6 @@ def main():
         quit()         # プログラムの終了
     instr = argvs[1]
     print "TEXT=[" + instr + "]"
-#    sample_u = u"ライ麦畑のつかまえ役、そういったものに僕はなりたいんだよ。馬鹿げてることは知ってるよ。でも、ほんとうになりたいものといったらそれしかないね。"
-    sample_u = u"ライ麦畑のつかまえ役、そういったものに僕はなりたいんだよ。馬鹿げてることはしってるよ。でも、ほんとうになりたいものといったらそれしかないね。"
     print str(score(instr.decode('utf-8')))
     return
 
@@ -36,7 +34,6 @@ def score(unicode_string):
     cnt = 0
     while node:
         pos = node.feature.split(",")[0]
-#        continue if pos != "名詞" and pos != "動詞" and pos != "形容詞"
         if pos != "名詞" and pos != "動詞" and pos != "形容詞" and pos != "副詞":
             node = node.next
             continue
