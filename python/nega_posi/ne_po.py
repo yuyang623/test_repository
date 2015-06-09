@@ -39,8 +39,12 @@ def score(unicode_string):
             continue
         # unicode 型に戻す
         word = node.surface.decode("utf-8")
+#        word = node.feature.decode("utf-8")
         #一つの単語に複数のスコアがつく場合があるが、足し合わせる。例)敵：かたき(-0.018981)、てき(-0.999579)
-        tmp = float(PN_DIC[PN_DIC.word==word].score.sum())
+        tmp = float(PN_DIC[PN_DIC.word==word].score.mean())
+        if str(tmp) == "nan":
+            node = node.next
+            continue
         print "WORD=[" + word + "]\t" + "SCORE=[" + str(tmp) + "]"
         sum_score += tmp
         cnt+=1
